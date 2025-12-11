@@ -10,3 +10,9 @@ time = "run --quiet --release -- time"
 
 [env]
 AOC_YEAR = "2025"
+
+[target.aarch64-apple-darwin]
+rustflags = [
+    "-C", "link-arg=-undefined",
+    "-C", "link-arg=dynamic_lookup",
+]
