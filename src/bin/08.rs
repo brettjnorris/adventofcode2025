@@ -117,7 +117,7 @@ pub fn part_two(input: &str) -> Option<u64> {
     let mut uf = UnionFind::new(junction_boxes.boxes.len());
     let mut last_connection: Option<(usize, usize)> = None;
 
-    for (dist, a, b) in junction_boxes.pairs.iter() {
+    for (_dist, a, b) in junction_boxes.pairs.iter() {
         if uf.union(*a, *b) {
             last_connection = Some((*a, *b));
         }

@@ -75,14 +75,12 @@ impl Edge {
 
 #[derive(Debug, Copy, Clone)]
 struct Rectangle {
-    corners: (Point, Point),
     bounds: Bounds,
 }
 
 impl Rectangle {
     fn from_points(a: Point, b: Point) -> Self {
         Self {
-            corners: (a, b),
             bounds: Bounds::from_points(a, b),
         }
     }

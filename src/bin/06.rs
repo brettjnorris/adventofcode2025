@@ -130,7 +130,7 @@ fn process_columns(lines: &[&str]) -> Vec<u64> {
     }).collect()
 }
 
-fn initialize_accumulator(operators: &Vec<Operator>) -> Vec<u64> {
+fn initialize_accumulator(operators: &[Operator]) -> Vec<u64> {
     operators.iter().map(|operator| {
         match operator {
             Operator::Multiply => 1,
