@@ -100,9 +100,7 @@ pub fn part_one(input: &str) -> Option<u64> {
     let list = IngredientList::from_text(input);
 
     Some(
-        check_ingredients(&list.fresh_ingredients, &list.available_ingredients)
-            .iter()
-            .count() as u64,
+        check_ingredients(&list.fresh_ingredients, &list.available_ingredients).len() as u64,
     )
 }
 

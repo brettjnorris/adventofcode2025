@@ -124,7 +124,7 @@ impl TileFloor {
         let mut bounding_lines = vec![];
 
         for i in 0..tiles.len() {
-            match (tiles.get(0), tiles.get(i), tiles.get(i + 1)) {
+            match (tiles.first(), tiles.get(i), tiles.get(i + 1)) {
                 (_, Some(&left), Some(&right)) => {
                     bounding_lines.push(Edge::from_points(left, right))
                 }

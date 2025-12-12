@@ -8,7 +8,7 @@ struct ProductRanges {
 
 impl ProductRanges {
     fn from_text(text: &str) -> Self {
-        let ranges = text.lines().map(|line| {
+        let ranges = text.lines().flat_map(|line| {
             line.split(',').map(|range| {
                 let parts = range.split('-').collect::<Vec<&str>>();
                 (
@@ -16,7 +16,7 @@ impl ProductRanges {
                     parts[1].parse::<u64>().unwrap_or(0),
                 )
             }).collect::<Vec<(u64, u64)>>()
-        }).flatten().collect();
+        }).collect();
 
         ProductRanges { ranges }
     }
@@ -30,7 +30,7 @@ impl ProductRanges {
 
     fn is_repeated(text: &str) -> bool {
         (1..=text.len() / 2).any(|chunk_size| {
-            text.len() % chunk_size == 0 && {
+            text.len().is_multiple_of(chunk_size) && {
                 let pattern = &text[..chunk_size];
                 text.chars()
                     .chunks(chunk_size)

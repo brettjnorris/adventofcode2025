@@ -27,7 +27,7 @@ impl BeamMap {
                     'S' => start_position = (row_index, col_index),
                     '^' => splitter_map
                         .entry(col_index)
-                        .or_insert(vec![])
+                        .or_default()
                         .push(row_index),
                     _ => {}
                 }
@@ -86,8 +86,7 @@ impl BeamMap {
         if let Some(col_splitters) = self.splitter_map.get(&col_index) {
             col_splitters
                 .iter()
-                .find(|&elem| elem > &current_row)
-                .map(|&elem| elem)
+                .find(|&elem| elem > &current_row).copied()
         } else {
             None
         }
@@ -121,7 +120,7 @@ impl BeamMap {
         start: (usize, usize),
     ) -> u64 {
         if let Some(cached_count) = cache.get(&start) {
-            return cached_count.clone();
+            return *cached_count;
         }
 
         let mut count = 0;

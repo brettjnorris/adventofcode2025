@@ -29,7 +29,7 @@ fn parse_operators(line: &str) -> Vec<Operator> {
 
 fn process_rows(operators: Vec<Operator>, rows: &[&str]) -> Vec<u64> {
     rows.iter().fold(initialize_accumulator(&operators), |mut acc, &line| {
-        for (index, val) in line.trim().split_whitespace().enumerate() {
+        for (index, val) in line.split_whitespace().enumerate() {
             let num = val.parse::<u64>().unwrap_or(0);
 
             match operators[index] {
@@ -55,7 +55,7 @@ fn parse_operators_by_index(line: &str) -> Vec<Operator> {
             _ => {}
         }
 
-        current_operator.unwrap_or(Operator::Add).clone()
+        current_operator.unwrap_or(Operator::Add)
     }).collect()
 }
 
