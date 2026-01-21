@@ -21,11 +21,14 @@ test_lib = []
 
 [dependencies]
 itertools = "0.14.0"
-good_lp = { version = "1.8", features = ["coin_cbc"] }# Template dependenciess 
+good_lp = { version = "1.8", default-features = false, features = ["highs"] }
+# Template dependencies
 chrono = { version = "0.4.38", optional = true }
 dhat = { version = "0.3.3", optional = true }
 pico-args = "0.5.0"
 tinyjson = "2.5.1"
 regex = "1.12.2"
+dlx = "0.8.5"
+rayon = "1.10"
 
 # Solution dependencies
